@@ -26,7 +26,7 @@ favoriteRouter.route('/')
 .post(cors.corsWithOptions, authenticate.verifyUser, function(req, res, next) {
     var userId = req.decoded._doc._id;
     var dishId = req.body._id;
-    console.log(dishId);
+    
     Favorites.count({
       user: userId
     }, function(err, count) {
@@ -122,7 +122,7 @@ favoriteRouter.route('/:dishId')
                         res.statusCode = 201;
                         res.setHeader("Content-Type", "application/json");
                         res.json(userFavs);
-                        console.log("Favorites Created");
+                        
                     }, (err) => next(err))
                     .catch((err) => next(err));
 
